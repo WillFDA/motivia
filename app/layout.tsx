@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "../contexts/ThemeProvider";
+import Header from "@/components/layout/Header";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -23,7 +24,11 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          {children}
+          <main className="flex min-h-screen flex-col items-center gap-8 p-10 max-w-6xl mx-auto">
+            <Header />
+
+            {children}
+          </main>
         </ThemeProvider>
       </body>
     </html>
