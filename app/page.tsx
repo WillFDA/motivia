@@ -8,7 +8,7 @@ export default function Home() {
       </h1>
 
       <Link href="/create">
-        <Button variant="secondary" size="lg">
+        <Button variant="default" size="lg">
           C&apos;est parti !
         </Button>
       </Link>
