@@ -1,3 +1,9 @@
+import UserFormContextProvider from "@/contexts/form-provider";
+
 export default function Create() {
-  return <div>Create</div>;
+  return (
+    <UserFormContextProvider>
+      <div>Create</div>
+    </UserFormContextProvider>
+  );
 }
