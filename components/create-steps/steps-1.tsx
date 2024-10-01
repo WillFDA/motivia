@@ -13,6 +13,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
 
 export default function Steps1() {
   const formContext = useUserFormContext();
@@ -25,6 +26,9 @@ export default function Steps1() {
   const newPropertyFormSchema = z.object({
     name: z.string().min(3),
     lastName: z.string().min(3),
+    stack: z.array(z.string()).min(1),
+    motivation: z.string().min(1),
+    journey: z.string().min(1),
   });
 
   const stepOneForm = useForm<z.infer<typeof newPropertyFormSchema>>({
@@ -33,6 +37,9 @@ export default function Steps1() {
     defaultValues: {
       name: formContext.user?.name || "",
       lastName: formContext.user?.lastName || "",
+      stack: formContext.user?.stack || [],
+      motivation: formContext.user?.motivation || "",
+      journey: formContext.user?.journey || "",
     },
   });
 
@@ -59,7 +66,7 @@ export default function Steps1() {
             control={stepOneForm.control}
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Name</FormLabel>
+                <FormLabel>Prénom</FormLabel>
                 <FormMessage />
                 <FormControl>
                   <Input {...field} />
@@ -72,7 +79,7 @@ export default function Steps1() {
             control={stepOneForm.control}
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Lastname</FormLabel>
+                <FormLabel>Nom</FormLabel>
                 <FormMessage />
                 <FormControl>
                   <Input {...field} />
@@ -80,6 +87,26 @@ export default function Steps1() {
               </FormItem>
             )}
           />
+          <FormField
+            name="stack"
+            control={stepOneForm.control}
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Votre stack technique</FormLabel>
+                <FormMessage />
+                <FormControl>
+                  <Input {...field} />
+                </FormControl>
+                <FormDescription>
+                  Sélectionnez les technologies que vous utilisez
+                </FormDescription>
+              </FormItem>
+            )}
+          />
+          <div className="flex items-center justify-between">
+            <Button variant="secondary">Previous</Button>
+            <Button type="submit">Next</Button>
+          </div>
         </form>
       </Form>
     </FormProvider>

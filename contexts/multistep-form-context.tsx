@@ -2,7 +2,7 @@ import { createContext } from "react";
 
 export type UserData = {
   name: string;
-  email: string;
+  lastName: string;
   stack: string[];
   motivation?: string;
   journey: string;
